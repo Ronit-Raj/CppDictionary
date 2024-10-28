@@ -37,10 +37,14 @@ void parseJSON(string resp){
         return;
     }
     Value meanings=root[0]["meanings"];
-    int noOfMeanings=meanings.size();
-    for(int i=0;i<noOfMeanings;i++){
-        cout<<i+1<<": ";
-        cout<<meanings[i]["definitions"][i]["definition"]<<endl;
+    for(int i=0;i<meanings.size();i++){
+        Value meaning=meanings[i];
+        cout<<meaning["partOfSpeech"].asString()<<endl;
+        Value definitions=meaning["definitions"];
+        for(int j=0;j<definitions.size();j++){
+            cout<<" "<<j+1<<".";
+            cout<<definitions[j]["definition"]<<endl;
+        }
     }
 }
 size_t handleChunk(void* contents,size_t size,size_t nmemb,void* userp){
