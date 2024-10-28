@@ -1,0 +1,1 @@
+A dictionary made using the free dictionary API c++
