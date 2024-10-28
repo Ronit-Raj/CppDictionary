@@ -43,7 +43,7 @@ void parseJSON(string resp){
         Value definitions=meaning["definitions"];
         for(int j=0;j<definitions.size();j++){
             cout<<" "<<j+1<<".";
-            cout<<definitions[j]["definition"]<<endl;
+            cout<<definitions[j]["definition"].asString()<<endl;
         }
     }
 }
