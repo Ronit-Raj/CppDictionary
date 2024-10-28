@@ -14,7 +14,7 @@ curl-config --libs
 ```
 sudo apt-get install libjsoncpp-dev
 ```
-3.Clone the repo and navigate to the directory containing main.cpp
+3.Clone the repo and navigate to the directory containing main.cpp  
 4.Compile main.cpp
 ```
 g++ main.cpp -o main -lcurl -ljsoncpp
