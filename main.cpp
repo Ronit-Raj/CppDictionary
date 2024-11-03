@@ -36,6 +36,10 @@ void parseJSON(string resp){
         cout<<"JSON parsing failed:\n"<<err<<endl;
         return;
     }
+    if(root[0]["title"]=="No Definitions Found"){
+        cout<<"No definitions found ";
+        return ;
+    }
     Value meanings=root[0]["meanings"];
     for(int i=0;i<meanings.size();i++){
         Value meaning=meanings[i];
