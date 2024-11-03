@@ -36,19 +36,20 @@ void parseJSON(string resp){
         cout<<"JSON parsing failed:\n"<<err<<endl;
         return;
     }
-    if(root[0]["title"]=="No Definitions Found"){
-        cout<<"No definitions found ";
-        return ;
-    }
-    Value meanings=root[0]["meanings"];
-    for(int i=0;i<meanings.size();i++){
-        Value meaning=meanings[i];
-        cout<<meaning["partOfSpeech"].asString()<<endl;
-        Value definitions=meaning["definitions"];
-        for(int j=0;j<definitions.size();j++){
-            cout<<" "<<j+1<<".";
-            cout<<definitions[j]["definition"].asString()<<endl;
+    try{
+        Value meanings=root[0]["meanings"];
+        for(int i=0;i<meanings.size();i++){
+            Value meaning=meanings[i];
+            cout<<meaning["partOfSpeech"].asString()<<endl;
+            Value definitions=meaning["definitions"];
+            for(int j=0;j<definitions.size();j++){
+                cout<<" "<<j+1<<".";
+                cout<<definitions[j]["definition"].asString()<<endl;
+            }
         }
+    }
+    catch(Json::LogicError e){
+        cout<<"no meaning found \n";
     }
 }
 size_t handleChunk(void* contents,size_t size,size_t nmemb,void* userp){
